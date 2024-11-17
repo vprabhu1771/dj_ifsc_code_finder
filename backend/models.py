@@ -22,3 +22,15 @@ class Country(models.Model):
 
     class Meta:
         db_table = "country"
+
+class State(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    code = models.CharField(max_length=3, unique=True)
+    name = models.CharField(max_length=255, unique=True)
+    country = models.ForeignKey(Country, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "state"

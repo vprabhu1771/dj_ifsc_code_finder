@@ -11,3 +11,14 @@ class Bank(models.Model):
 
     class Meta:
         db_table = "bank"
+
+class Country(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    code = models.CharField(max_length=3, unique=True)
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "country"

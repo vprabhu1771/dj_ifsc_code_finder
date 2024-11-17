@@ -2,7 +2,7 @@ from multiprocessing.resource_tracker import register
 
 from django.contrib import admin
 
-from backend.models import Bank, Country, State
+from backend.models import Bank, Country, State, City
 
 
 # Register your models here.
@@ -24,3 +24,9 @@ class StateAdmin(admin.ModelAdmin):
     list_display = ('country', 'name', 'code',)
 
     search_fields = ('country', 'name', 'code',)
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('state', 'name', 'code',)
+
+    search_fields = ('state', 'name', 'code',)
